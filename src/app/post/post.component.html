@@ -1,0 +1,21 @@
+<p>
+  post works!
+</p>
+
+<ul>
+  <li>
+    <a [routerLink]="['Panel']">Panel</a>
+    </li>
+    <li><a [routerLink]="['Zippy']">Zippy</a></li>
+</ul>
+
+<br><br><br><br>
+<input (keyup.enter)="createPost(title)" type="text" class="form-control" #title>
+<ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item">
+      <button (click)=updatePost(post) class="btn btn-primary btn-sm">Update</button>
+      <button (click)=deletePost(post) class="btn btn-danger btn-sm">Delete</button>
+      {{post.title}}
+   </li>
+      </ul>
+

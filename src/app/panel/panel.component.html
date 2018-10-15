@@ -1,0 +1,14 @@
+<div class="default-panel-heading">
+  <div class="heading">
+    <ng-content select=".heading"></ng-content>
+  </div>
+  <div class="body">
+    <ng-content select=".body"></ng-content>
+  </div>
+</div>
+<span class="glyphicon glyphicon-heart"
+[class.highlighted]="isSelected"
+
+ (click)="onclick()"></span>
+
+ <span>{{ likescount }}</span>

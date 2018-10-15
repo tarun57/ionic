@@ -1,0 +1,36 @@
+<div class="zippy">
+<div class="zippy-heading"
+[class.expanded]="isExpanded"
+(click)=onclick()
+>
+{{title}}
+<span class="glyphicon"
+[ngClass]="{
+'glyphicon-cheveron-up' : isExpanded,
+'glyphicon-cheveron-doen' : !isExpanded
+}"
+></span>
+</div>
+<div *ngIf="isExpanded" class="zippy-body">
+  <ng-content></ng-content>
+</div>  
+</div>
+
+<div title="Shipping details">
+    Shipping details count
+</div>
+<div title="Buying details">
+    Buying details count
+</div>
+
+
+<ul class="nav nav-pills">
+    <li [class.active]="ViewMode == 'map'" (click)="ViewMode='map'"><a>View map</a></li>
+    <li [class.active]="ViewMode == 'list'" (click)="ViewMode='list'"><a>View course</a></li>
+</ul>
+
+<div [ngSwitch]="ViewMode">
+    <div *ngSwitchCase="'map'">View map detail</div>
+    <div *ngSwitchCase="'list'">List view detail</div>
+    <div *ngSwitchDefault>Please enter on this view</div>
+</div>
