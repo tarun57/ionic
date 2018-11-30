@@ -11,7 +11,10 @@ export class AppComponent {
 
   ViewMode = 'Something Else';
   course = [1,2 ];
+
+
   title = 'Angular App';
+  
   tweet={
     body: '...',
     likescount: 10,

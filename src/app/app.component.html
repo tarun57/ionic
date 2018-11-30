@@ -1,65 +1,10 @@
-<router-outlet></router-outlet>
 
-<h1>Angular</h1>
-<app-course></app-course>
-<courses></courses>
-<app-panel>
-    <ng-container class="heading">
-        <h1>Heading</h1>
-        <p>Some text.</p>
-    </ng-container>
-    <div class="body">
-        <h1>Body</h1>
-        <p>Some task for body.</p>
-    </div>
-</app-panel>
-<app-panel [likescount]="tweet.likescount" [isSelected]="tweet.isliked"></app-panel><br>
-<div *ngIf="course.length > 0; then course else nocourse"></div>
-<ng-template #course>
-    List of Course
-</ng-template>
-<ng-template #nocourse>
-    Not any course
-</ng-template>
-<br>
-<div *ngIf="course.length > 0; then course else nocourse"></div>
-<ng-template [ngIf]="course.length > 0">
-    List of Course
-</ng-template>
-<ng-template [ngIf]="!(course.length > 0)">
-    Not any course
-</ng-template>
-
-
-
-<br>
-
-<app-zippy title="Shipping details">
-        Shipping details count
-    </app-zippy>
-    <app-zippy title="Buying details">
-        Buying details count
-    </app-zippy>
-    
-
-
-<button class="btn btn-primary" (click)="Add()">Add new</button>
-<ul>
-    <li *ngFor="let course of courses;even as isEVEN">
-        {{ course.name }}<span *ngIf="isEVEN">(EVEN)</span>
-    </li>
-</ul>
-<button class="btn btn-primary" (click)="Remove(course)">Remove</button>
-<button class="btn btn-success" (click)="onChange(course)">Update</button>
-<button class="btn btn-success" (click)="Load()">Load More</button>
-<br>
-<input type="text" [appInputFormat]="'uppercase'">
-<br>
-
-<app-contact-form></app-contact-form>
+<app-local></app-local>
 
 <app-signup-form></app-signup-form>
 
 <app-new-course-form></app-new-course-form>
+<br>
+<br><br><br>
+<router-outlet></router-outlet>
 
-<app-post></app-post>

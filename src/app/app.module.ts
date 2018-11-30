@@ -15,6 +15,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostComponent } from './post/post.component';
 import { RouterModule } from '@angular/router';
+import { LocalComponent } from './local/local.component';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { RouterModule } from '@angular/router';
     ContactFormComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    PostComponent   
+    PostComponent,
+    LocalComponent   
      
   ],
   imports: [
@@ -38,10 +41,14 @@ import { RouterModule } from '@angular/router';
     HttpModule,
     RouterModule.forRoot([
       { path: '' , component: PostComponent },   
-      { path : 'Zippy' , component: ZippyComponent },
+      { path : 'Zippy/:1234' , component: ZippyComponent },
       { path : 'Panel' , component: PanelComponent }
      
-    ])
+    ]),
+    LocalStorageModule.withConfig({
+      prefix: 'my-app',
+      storageType: 'localStorage'
+  })
   ],
   providers: [
     CoursesService

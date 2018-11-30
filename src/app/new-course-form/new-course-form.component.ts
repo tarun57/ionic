@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-new-course-form',
@@ -7,12 +8,46 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
   styleUrls: ['./new-course-form.component.css']
 })
 export class NewCourseFormComponent  {
+  newTodo: string;
+  todos: any;
+  todoObj: any;
 
+  constructor() {
+    this.newTodo = '';
+    this.todos = [];
+  }
+
+  addTodo(event) {
+    this.todoObj = {
+      newTodo: this.newTodo,
+      completed: false
+    }
+    this.todos.push(this.todoObj);
+    this.newTodo = '';
+    event.preventDefault();
+  }
+
+  deleteTodo(index) {
+    this.todos.splice(index, 1);
+  }
+
+  deleteSelectedTodos() {
+    //need ES5 to reverse loop in order to splice by index
+    for(var i=(this.todos.length -1); i > -1; i--) {
+      if(this.todos[i].completed) {
+        this.todos.splice(i, 1);
+      }
+    }
+  }
+
+
+  
 form = new FormGroup({
   topics : new FormArray([])
 });
  
-addTopic(topic: HTMLInputElement){
+
+add(topic){
   (this.form.get('topics') as FormArray).push(new FormControl(topic.value));
   topic.value='';
 }
@@ -25,6 +60,12 @@ removeTopic(topic: FormControl){
 
 get topics(){
   return this.form.get('topics') as FormArray;  
+}
+
+
+log(x) {console.log(x);}
+submit(topic){
+  console.log(topic);
 }
 
 

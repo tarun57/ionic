@@ -1,12 +1,24 @@
-<form>
-  <input type="text" class="form-control"
-  (keyup.enter)="addTopic(topic)" #topic>
-  <ul class="list-group">
-    <li
-    *ngFor="let topic of form.get('topics').controls"
-    (click)="removeTopic(topic)"
-    class="list-group-item">
-  {{ topic.value }}
-  </li>
-  </ul>
-  </form>
+
+  <div class="todos">
+
+    <div>
+    <form (submit)="addTodo($event)">
+    <input [(ngModel)]="newTodo" (keyup.enter)="newTodo=''" class="textfield" name="newTodo">
+      <button  type="submit" [disabled]="newTodo===''">Add</button>
+    </form>
+    </div>
+
+   
+    <ul>
+    <li *ngFor="let todo of todos; let i=index">
+      <!-- <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" /> -->
+  {{ todo.newTodo }}
+    <span (click)="deleteTodo(i)" class="delete-icon">X</span>
+      </li>
+      </ul>
+
+      <!-- <div class="mtop20">
+    <button (click)="deleteSelectedTodos()">Delete Selected</button>
+    </div>
+   -->
+</div>
